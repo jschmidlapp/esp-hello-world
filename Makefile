@@ -15,7 +15,7 @@ FW_BASE		= firmware
 XTENSA_TOOLS_ROOT ?= /opt/Espressif/crosstool-NG/builds/xtensa-lx106-elf/bin
 
 # base directory of the ESP8266 SDK package, absolute
-SDK_BASE	?= /opt/Espressif/ESP8266_SDK
+SDK_BASE	?= /opt/xtensa-lx106-elf/xtensa-lx106-elf/sysroot
 
 #Esptool.py path and port
 ESPTOOL		?= esptool.py
@@ -42,7 +42,7 @@ LD_SCRIPT	= eagle.app.v6.ld
 
 # various paths from the SDK used in this project
 SDK_LIBDIR	= lib
-SDK_LDDIR	= ld
+SDK_LDDIR	= usr/lib
 SDK_INCDIR	= include include/json
 
 # we create two different files for uploading into the flash
@@ -53,9 +53,9 @@ FW_FILE_2	= 0x40000
 FW_FILE_2_ARGS	= -es .irom0.text $@ -ec
 
 # select which tools to use as compiler, librarian and linker
-CC		:= $(XTENSA_TOOLS_ROOT)/xtensa-lx106-elf-gcc
-AR		:= $(XTENSA_TOOLS_ROOT)/xtensa-lx106-elf-ar
-LD		:= $(XTENSA_TOOLS_ROOT)/xtensa-lx106-elf-gcc
+CC		:= xtensa-lx106-elf-gcc
+AR		:= xtensa-lx106-elf-ar
+LD		:= xtensa-lx106-elf-gcc
 
 
 
